@@ -1,0 +1,522 @@
+﻿@{
+  ViewBag.Title = "Simulador";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link" id="tab1">
+              Simulador
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-repeat" viewBox="0 0 16 16">
+                <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
+              </svg>
+            </a>
+          </nav>
+
+          <div id="divtab1">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="credito1" class="required small-label">Credito</label>
+                  <input type="number" class="form-control text-capitalize small-input" id="credito1"
+                         placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="form-group">
+                  <button type="button" class="btn small-button"
+                          style="background-color:forestgreen ;color:white !important" id="invertir1">
+                    Simular
+                    <i class="bi bi-currency-exchange"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total"></h6></i>
+                </div>
+              </div>
+            </div>
+
+           @*  <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion de Base:</label>
+                  <i><h6 id="credito2"></h6></i>
+                </div>
+
+              </div>
+            
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital2"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes2"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva2"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro2"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal2"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base2"></h6></i>
+                </div>
+              </div>
+
+             
+            </div> *@
+
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion Pago semanal:</label>
+                  <i><h6 id="credito3"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital3"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes3"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva3"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro3"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal3"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base3"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total3"></h6></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion Pago semanal2:</label>
+                  <i><h6 id="credito4"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital4"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes4"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva4"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro4"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal4"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base4"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total4"></h6></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion Pago semanal3:</label>
+                  <i><h6 id="credito5"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital5"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes5"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva5"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro5"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal5"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base5"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total5"></h6></i>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion Pago semanal 4:</label>
+                  <i><h6 id="credito6"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital6"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes6"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva6"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro6"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal6"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base6"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total6"></h6></i>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion  Base 1:</label>
+                  <i><h6 id="credito7"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital7"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes7"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva7"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro7"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal7"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base7"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total7"></h6></i>
+                </div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Inversion  Base 2:</label>
+                  <i><h6 id="credito8"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital8"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes8"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva8"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro8"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Pago Semanal:</label>
+                  <i><h6 id="pagoSemanal8"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Base:</label>
+                  <i><h6 id="base8"></h6></i>
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total:</label>
+                  <i><h6 id="total8"></h6></i>
+                </div>
+              </div>
+            </div>
+            <br />
+            <hr />
+            <div class="row ">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total por Ciclo:</label>
+                  <i><h6 id="totalCiclo"></h6></i>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="base" class="required small-label">Total por Año:</label>
+                  <i><h6 id="totalAnio"></h6></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+@section Scripts {
+  <script src="~/js/Views/Simulador.js?rev=1.0.0.1.3"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#botonLimpiar').on('click', function () {
+        limpiarElementos();
+      });
+      $('#invertir1').on('click', function () {
+        calculateId();
+      });
+      $('#botonLimpiar').on('click', function () {
+        limpiarElementos();
+      });
+    });
+
+    
+
+  </script>
+}

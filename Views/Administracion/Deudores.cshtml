@@ -1,0 +1,255 @@
+﻿@{
+  ViewBag.Title = "Deudores";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  .details-control {
+    background: url(../../img/details_open.png) no-repeat center center;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+  }
+
+  .shown .details-control {
+    background: url(../../img/details_close.png) no-repeat center center;
+    height: 30px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+    .table-responsive table {
+      white-space: nowrap;
+    }
+
+  .chosen-container-single {
+    width: 180px !important;
+    text-align: left !important;
+  }
+
+  .dataTable tr th {
+    text-align: center !important;
+  }
+
+  .dataTable tr td {
+    text-align: center !important;
+    border-block-color: black;
+  }
+
+  #tmain {
+    max-width: 100% !important;
+  }
+
+
+
+  .container {
+    min-width: 95% !important;
+  }
+
+  .table  tr {
+    text-align: center !important; 
+    background-color:white;
+    color: black;
+  }
+
+  .table th  {
+    text-align: center !important;
+    background-image: linear-gradient(#ad8a1f, #d9ad26 60%,#ad8a1f);
+      color: white;
+  }
+  .table tr td {
+    text-align: center !important;
+  }
+
+  #tab1 {
+    background-image: linear-gradient(#202a58, #3b548f 60%,#192549);
+/*     background-color: #ffbf00;
+ */    color: white;
+    font-weight: bold;
+    /*border-radius: 20px;*/ /* Ajusta este valor según lo ovalado que quieras el borde */
+    border: 1px solid #d8b057;
+  }
+
+  #save {
+    background-image: linear-gradient(dodgerblue, steelblue 60%, darkblue);
+  }
+
+  .content-container {
+    margin-top: 10px; /* Ajusta este valor según sea necesario */
+  }
+
+  .card-body {
+    /*  background-color: #E8E8E8;
+  */
+  }
+
+  .small-input {
+    font-size: 12px;
+    padding: 2px 5px;
+    height: auto;
+  }
+
+  .small-select {
+    font-size: 12px;
+    padding: 2px 5px;
+    height: auto;
+  }
+  /* Para el contenedor que crea chosen */
+  .chosen-container-single .chosen-single {
+    font-size: 12px !important;
+    padding: 2px 5px !important;
+    height: auto !important;
+    line-height: normal !important;
+  }
+
+  /* Ajustar el tamaño del dropdown de chosen */
+  .chosen-container .chosen-drop {
+    font-size: 12px !important;
+  }
+
+  /* Ajustar el ancho del select */
+  .chosen-container {
+    width: 100% !important;
+  }
+
+
+  .small-button {
+    font-size: 12px;
+    padding: 2px 10px;
+  }
+
+  .small-label {
+    font-size: 12px;
+  }
+
+  .small-a {
+    font-size: 12px;
+  }
+
+  .small-table {
+    font-size: 12px;
+  }
+
+    .small-table th,
+    .small-table td {
+      padding: 5px;
+    }
+
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">
+              Clientes Con Pagos Atrasados
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-exclamation" viewBox="0 0 16 16">
+                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5m0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+              </svg>
+            </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label" style="font-weight: bold;">Al dia de Hoy:</label>
+                  <i><h6 id="dia"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Faltante:</label>
+                  <i><h6 id="faltante"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width:20px" class="noExl"></th>
+                    <th style="width: 20% !important;">Cliente</th>
+                    <th style="width: 20% !important;">Prestamo</th>
+                    <th style="width: 20% !important; ">Fecha de Prestamo</th>
+                    <th style="width: 20% !important; ">Pago semanal</th>
+                    <th style="width: 20% !important; ">Ahorro</th>
+                    <th style="width: 10% !important; ">Pagos Pendientes</th>
+                    <th style="width: 20% !important; ">Comision</th>
+                    <th style="width: 20% !important; ">Adeudo Total</th>
+                    <th style="width: 20% !important; ">Fecha de Termino</th>
+                    <th style="width: 10% !important; ">Credito</th>
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/Deudores.js?rev=1.0.0.1.18"></script>
+  @* <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.15"> *@
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+      });
+
+      const formato = ('YYYY-MM-DD');
+      let f = moment();
+      let faux2;
+      faux2 = f.format(formato);
+      $("#dia").html(faux2);
+      getClientsDeudores(faux2);
+
+    });
+
+
+  </script>
+}
+

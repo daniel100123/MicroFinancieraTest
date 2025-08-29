@@ -1,0 +1,107 @@
+﻿.table-responsive {
+  overflow-x: auto;
+}
+
+  .table-responsive table {
+    white-space: nowrap;
+  }
+.chosen-container-single {
+  width: 180px !important;
+  text-align: left !important;
+}
+
+.dataTable tr th {
+  text-align: center !important;
+}
+
+.dataTable tr td {
+  text-align: center !important;
+  border-block-color:black;
+}
+#tmain {
+  max-width: 100% !important;
+}
+
+
+
+.container {
+  min-width: 95% !important;
+}
+
+.table tr th {
+  text-align: center !important;
+  background-image: linear-gradient(#ad8a1f, #d9ad26 60%,#ad8a1f);
+  /*  background-color: #d9ad26;
+*/ color: white;
+}
+
+.table tr td {
+  text-align: center !important;
+}
+
+#tab1 {
+  background-image: linear-gradient(#202a58, #3b548f 60%,#192549);
+  /* background-color: #ffbf00;*/
+  color: white;
+  font-weight: bold;
+  /*border-radius: 20px;*/ /* Ajusta este valor según lo ovalado que quieras el borde */
+  border: 1px solid #d8b057;
+}
+#save {
+  background-image: linear-gradient(dodgerblue, steelblue 60%, darkblue);
+}
+.content-container {
+  margin-top: 10px; /* Ajusta este valor según sea necesario */
+}
+.card-body {
+/*  background-color: #E8E8E8;
+*/}
+.small-input {
+  font-size: 12px;
+  padding: 2px 5px;
+  height: auto;
+}
+
+.small-select {
+  font-size: 12px;
+  padding: 2px 5px;
+  height: auto;
+}
+/* Para el contenedor que crea chosen */
+.chosen-container-single .chosen-single {
+  font-size: 12px !important;
+  padding: 2px 5px !important;
+  height: auto !important;
+  line-height: normal !important;
+}
+
+/* Ajustar el tamaño del dropdown de chosen */
+.chosen-container .chosen-drop {
+  font-size: 12px !important;
+}
+
+/* Ajustar el ancho del select */
+.chosen-container {
+  width: 100% !important;
+}
+
+
+.small-button {
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
+.small-label {
+  font-size: 12px;
+}
+.small-a {
+  font-size: 12px;
+}
+.small-table {
+  font-size: 12px;
+}
+
+  .small-table th,
+  .small-table td {
+    padding: 5px;
+  }

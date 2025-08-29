@@ -1,0 +1,185 @@
+﻿@{
+  ViewBag.Title = "Registro Diario";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  .datepicker {
+    image-orientation: bottom auto;
+  }
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">Registro del Dia  </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="dia" class="required small-label">Dia</label>
+                  <input class="form-control datepicker small-input" type="text" id="dia" />
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+             @*  <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label" style="font-weight: bold;">Base Inicial:</label>
+                  <i><h6 id="base"></h6></i>
+                </div>
+              </div> *@
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="comision" class="required small-label" style="font-weight: bold;">Comision:</label>
+                  <i><h6 id="comision"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="efectivo" class="required small-label">Efectivo:</label>
+                  <i><h6 id="efectivo"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="transferencia" class="required small-label">Transferencia:</label>
+                  <i><h6 id="transferencia"></h6></i>
+                </div>
+              </div>
+            </div>
+            <div class="row bg-light">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="total" class="required small-label">Ingreso Hoy:</label>
+                  <i><h6 id="total"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ingresar" class="required small-label">Cantidad a Ingresar:</label>
+                  <i><h6 id="ingresar"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="faltante" class="required small-label">Cantidad Faltante:</label>
+                  <i><h6 id="faltante"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="invertido" class="required small-label">Invertido Hoy:</label>
+                  <i><h6 id="invertido"></h6></i>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 20% !important; ">Cliente</th>
+                    <th style="width: 20% !important; ">Credito</th>
+                    <th style="width: 20% !important; ">Fecha a pagar</th>
+                    <th style="width: 20% !important; ">Fecha que pago</th>
+                    <th style="width: 20% !important; ">Semana</th>
+                    <th style="width: 20% !important; ">Pago</th>
+                    <th style="width: 10% !important; ">Comision</th>
+                    <th style="width: 10% !important; ">Pago Semanal</th>
+                    <th style="width: 10% !important; ">Total</th>
+                    <th style="width: 10% !important; ">Medio</th>
+                    <th style="width: 10% !important; ">Credito</th>
+                    <th style="width: 10% !important; ">Pagado</th>
+                    <th style="width: 10% !important; ">Dia</th>
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/RegistroDiario.js?rev=1.0.0.1.4"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        orientation: 'bottom auto',
+      });
+
+      moment.locale('ES');
+      const formato = ('YYYY-MM-DD');
+      let f = moment();
+      let faux2;
+      faux2 = f.format(formato);
+      $("#dia").val(faux2);
+
+      var diaInicio = moment(faux2).format('DD');
+      // var mes = moment(faux2).format('MMMM');
+      var mes = moment(faux2).locale('es').format('MMMM');
+      var tabElement = document.getElementById('tab1');
+
+      // Agregar el texto "de Javier" al contenido del elemento
+      tabElement.innerHTML += ' Del  ' + diaInicio + '  De  ' + mes + " " + '<i class="bi bi-clipboard-check"></i>';
+
+      calcularFecha();
+      $("#dia").change(function () {
+        calcularFecha();
+      });
+    });
+
+
+  </script>
+}

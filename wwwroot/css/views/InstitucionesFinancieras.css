@@ -1,0 +1,104 @@
+﻿.table-container {
+  overflow-x: auto; /* Habilita el desplazamiento horizontal si los elementos exceden el ancho del contenedor */
+  white-space: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+  .table-responsive table {
+    white-space: nowrap;
+  }
+
+hr {
+  border-bottom: 2px solid black;
+  margin: 10px 0;
+}
+
+table.dataTable thead tr > .dtfc-fixed-left,
+table.dataTable thead tr > .dtfc-fixed-right,
+table.dataTable tfoot tr > .dtfc-fixed-left,
+table.dataTable tfoot tr > .dtfc-fixed-right {
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  /* background-color: white */
+}
+
+table.dataTable tbody tr > .dtfc-fixed-left,
+table.dataTable tbody tr > .dtfc-fixed-right {
+  z-index: 1;
+  /* background-color: white */
+}
+
+div.dtfc-left-top-blocker,
+div.dtfc-right-top-blocker {
+  /* background-color: white */
+}
+
+#tmain {
+  max-width: 100% !important;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr.dt-hasChild > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.dt-hasChild.shown > th.dtr-control:before {
+  top: 50%;
+  left: 5px;
+  height: 1em;
+  width: 1em;
+  margin-top: -9px;
+  display: block;
+  position: absolute;
+  color: white;
+  border: 0.15em solid white;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.02em;
+  content: "-";
+  background-color: #ff4c4c;
+}
+
+.txt-d-cero:hover {
+  color: #005cff;
+}
+
+#tmain > tbody > tr.even,
+#tmain > tbody > tr.odd {
+  background: #DCEDC8;
+}
+
+.badge {
+  padding: 4px 4px;
+  font-size: 8px;
+}
+
+/* tmain2 */
+
+#tmain2 {
+  max-width: 100% !important;
+}
+
+  #tmain2 > tbody > tr.even,
+  #tmain2 > tbody > tr.odd {
+    background: #DCEDC8;
+  }
+
+.green-circle-button {
+  background-color: #4CAF50; /* Color verde */
+  border: none;
+  border-radius: 50%; /* Hace que el botón sea circular */
+  color: white; /* Color del texto (la palomita) */
+  width: 30px; /* Tamaño del botón */
+  height: 30px; /* Tamaño del botón */
+  font-size: 18px; /* Tamaño de la palomita */
+}
+
+.checkmark {
+  position: relative;
+  top: -4px; /* Ajusta la posición vertical de la palomita */
+}

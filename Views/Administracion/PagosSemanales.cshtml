@@ -1,0 +1,240 @@
+﻿@{
+  ViewBag.Title = "Pagos Semanales";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+  .dataTables_wrapper .dataTable .badge {
+    display: inline-block !important; /* Asegura que los botones siempre estén visibles */
+  }
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a"  id="tab1">Pagos Semanales  <i class="bi bi-currency-dollar"></i></a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="clientes" class="required">Clientes</label>
+                  <select class="form-select chosen-select clientes small-select" data-placeholder="Selecciona un cliente"
+                          data-rel="chosen" name="clientes"></select>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="creditoId" class="required">Credito</label>
+                  <select class="form-select chosen-select creditoId small-select" data-placeholder="Selecciona un Credito"
+                          data-rel="chosen" name="creditoId"></select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="cantidadP" class="required small-label">Cantidad a Pagar</label>
+                  <input type="hidden" class="form-control text-capitalize small-input" id="id" placeholder="" maxlength="50">
+                  <input type="text" class="form-control text-capitalize small-input" id="cantidadP" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="metodoPago" class="required small-label">Metodo de Pago</label>
+                  <select class="form-select chosen-select metodoPago small-select" data-placeholder="Selecciona un metodo de Pago"
+                          data-rel="chosen" name="metodoPago"></select>
+                </div>
+              </div>
+              <div class="col-2">
+                 <div class="form-group">
+                  <label for="pagoSemanal" class="required small-label">Pago Total Semanal:</label>
+                  <i><h6 id="pagoSemanal"></h6></i>
+                 </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="creditoI" class="required small-label">Credito:</label>
+                  <i><h6 id="creditoI"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="cantidadP" class="required small-label">Base Inicial:</label>
+                  <i><h6 id="base"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaRP" class="required small-label">Fecha en la que se Realiza el Pago</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaRP" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="semana" class="required small-label">Semana</label>
+                  <input type="number" class="form-control text-capitalize small-input" id="semana" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <input type="checkbox" class="limpiar" id="comision" />
+                  <label for="comision"><b>Comision $</b></label><br />
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="comisioTotal" class="required small-label">Total Comision:</label>
+                  <i><h6 id="comisioTotal"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorroTotal" class="required small-label">Ahorro Total:</label>
+                  <i><h6 id="ahorroTotal"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="cantidadP" class="required small-label">Base Inicial + (Ahorro Total - comision):</label>
+                  <i><h6 id="basemasAhorro"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control text-capitalize" id="comentario" placeholder="Nota" maxlength="300">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <input type="checkbox" class="limpiar" id="ahorroPagado" />
+                  <label for="comision"><b>Ahorro $</b></label><br />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                <button type="button" class="btn small-button" style="color:white" id="save">Guardar</button>
+                <button type="button" class="btn small-button" style="background-color:gainsboro; color:black" id="botonLimpiar">Limpiar</button>
+                <button type="button" class="btn small-button" style="background-color:forestgreen ;color:white !important" id="ticket" disabled>Decargar Ticket</button>
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 20% !important; ">Semana</th>
+                    <th style="width: 20% !important; ">Fecha De pago</th>
+                    <th style="width: 20% !important; ">Fecha Realizada</th>
+                    <th style="width: 20% !important; ">Ahorro Semanal</th>
+                    <th style="width: 10% !important; ">Comision</th>
+                    <th style="width: 20% !important; ">Comision Pagada</th>
+                    <th style="width: 10% !important; ">Cantidad Pagada</th>
+                    <th style="width: 20% !important; ">Total a Pagar</th>
+                    <th style="width: 20% !important; ">Comentario</th>
+                    <th style="width: 10% !important; "> Editar</th>
+                    <th style="width: 10% !important; "> Eliminar</th>
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="button" class="btn small-button" style="background-color:forestgreen; color:white" id="btndescargar">Descargar Excel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/PagosSemanales.js?rev=1.0.0.1.31"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+      });
+      getClients();
+      $(".clientes").change(function () {
+        GETCreditoCatalago();
+      });
+      $(".creditoId").change(function () {
+        GetTableDetalleCliente();
+      });
+      $('#save').on('click', function () {
+        if (isEmpty("#fechaRP")) {
+          swalError("Por selecciona una fecha");
+          return false;
+        }
+        if ($(".metodoPago").val() == 0) {
+          swalError("Por selecciona un metodo de pago");
+          return false;
+        }
+        var data = {};
+        if ($("#id").val() != "") {
+          data.Id = $("#id").val();
+        }
+
+        SavePago();
+      });
+      $('#botonLimpiar').on('click', function () {
+        limpiarElementos();
+      });
+      $('#ticket').on('click', function () {
+        descargarTicket($(".clientes").val(), $("#fechaRP").val(), $("#semana").val(), $("#cantidadP").val(), $(".metodoPago").val(), $(".creditoId").val());
+      });
+      $("#credito").blur(function () {
+        calculateId();
+      });
+      $(".clientes").chosen({
+        allow_single_deselect: true,
+        disable_search_threshold: 10, // Oculta la barra de búsqueda si hay pocas opciones
+        width: '100%' // Asegura que chosen ocupe todo el ancho del contenedor
+      });
+
+      $("#btndescargar").on("click", function () {
+        descargarExcel();
+      });
+    });
+    function calculateId() {
+      console.log("calculateId called");
+      var baseInicial = $('#credito').val();
+      if (!isNaN(baseInicial)) {
+        var porcentaje = baseInicial * 0.10;
+        var ahorrosemanal = baseInicial * 0.0075;
+
+        var pagoTotalSemanal = (baseInicial / 16) + (baseInicial * 0.015) + (baseInicial * 0.0024) + ahorrosemanal;
+        $('#baseInicial').val(porcentaje);
+        $('#ahorroSemanal').val(ahorrosemanal);
+        $('#pagoTotalSemnal').val(pagoTotalSemanal);
+      }
+    }
+
+  </script>
+}

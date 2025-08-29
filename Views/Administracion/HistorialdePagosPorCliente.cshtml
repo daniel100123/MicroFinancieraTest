@@ -1,0 +1,181 @@
+﻿@{
+  ViewBag.Title = "Historial de Pagos Por Cliente";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  .datepicker {
+    image-orientation: bottom auto;
+  }
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">Historial por Cliente <i class="bi bi-person-lines-fill"></i> </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="clientes" class="required">Clientes</label>
+                  <select class="form-select chosen-select clientes small-select" data-placeholder="Selecciona un cliente"
+                          data-rel="chosen" name="clientes"></select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="creditoId" class="required">Credito</label>
+                  <select class="form-select chosen-select creditoId small-select" data-placeholder="Selecciona un Credito"
+                          data-rel="chosen" name="creditoId"></select>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital:</label>
+                  <i><h6 id="pagoCapital"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes:</label>
+                  <i><h6 id="interes"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA:</label>
+                  <i><h6 id="iva"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro:</label>
+                  <i><h6 id="ahorro"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+             
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="diaPago" class="required small-label">Dia de Pago:</label>
+                  <i><h6 id="diaPago"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="efectivo" class="required small-label">Efectivo:</label>
+                  <i><h6 id="efectivo"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="transferencia" class="required small-label">Transferencia:</label>
+                  <i><h6 id="transferencia"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="total" class="required small-label">Total:</label>
+                  <i><h6 id="total"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="invertido" class="required small-label">Credito:</label>
+                  <i><h6 id="invertido"></h6></i>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label" style="font-weight: bold;">Base Inicial:</label>
+                  <i><h6 id="base"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="basemasahorro" class="required small-label" style="font-weight: bold;">Base Inicial + Ahorro:</label>
+                  <i><h6 id="basemasahorro"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="comision" class="required small-label" style="font-weight: bold;">Comision:</label>
+                  <i><h6 id="comision"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="basemasahorroMComision" class="required small-label" style="font-weight: bold;">(Base Inicial + Ahorro) - Comsion:</label>
+                  <i><h6 id="basemasahorroMComision"></h6></i>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 40% !important; ">Cliente</th>
+                    <th style="width: 40% !important; ">Fecha</th>
+                    <th style="width: 20% !important; ">Semana</th>
+                    <th style="width: 20% !important; ">Pago</th>
+                    <th style="width: 10% !important; ">Comision</th>
+                    <th style="width: 10% !important; ">Total</th>
+                    <th style="width: 10% !important; ">Medio</th>
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/HistorialCliente.js?rev=1.0.0.1.11"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        orientation: 'bottom auto',
+      });
+      getClients();
+      $(".clientes").change(function () {
+        GETCreditoCatalago();
+      });
+      $(".creditoId").change(function () {
+        getTable($(".clientes").val(), $(".creditoId").val());
+      });
+    });
+
+
+  </script>
+}

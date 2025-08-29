@@ -1,0 +1,282 @@
+﻿@{
+  ViewBag.Title = "Reporte Semanal";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+  .custom-semana-group {
+    max-width: 250px; /* Ajusta el ancho total del grupo */
+    height: auto;
+    border-block-color: black;
+  }
+
+    .custom-semana-group .btn {
+      padding: 4px 8px; /* Botones más pequeños */
+      font-size: 12px; /* Texto de botón más pequeño */
+      border-block-color: black;
+    }
+
+  #semana {
+    border-block-color: black;
+    font-size: 12px; /* Texto más pequeño en el campo de entrada */
+    padding: 5px; /* Reduce el padding interno */
+    font-weight: bold;
+  }
+
+  .input-group .input-group-btn .btn {
+    height: auto; /* Permite ajustar el tamaño del botón al contenido */
+  }
+
+  .input-group {
+    margin: 0 auto; /* Alinea el componente */
+  }
+
+  .bg-gray {
+    background-color: gray;
+  }
+</style>
+
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">Reporte Semanal </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="input-group custom-semana-group">
+                  <span class="input-group-btn">
+                    <button type="button" class="semana-left-minus btn-number btn app-btn-secondary"
+                            data-type="minus" data-field="">
+                      <span class="glyphicon glyphicon-minus">
+                        <
+                      </span>
+                    </button>
+                  </span>
+                  <input type="text" id="semana" name="semana" class="form-control text-center small-input" value=""
+                         min="1" max="100" disabled>
+                  <span class="input-group-btn">
+                    <button type="button" class="semana-right-plus btn-number  btn app-btn-secondary"
+                            data-type="plus" data-field="">
+                      <span class="glyphicon glyphicon-chevron-left">></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="pagoCapital" class="required small-label">Pago Capital semanal:</label>
+                  <i><h6 id="pagoCapital"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="interes" class="required small-label">Interes semanal:</label>
+                  <i><h6 id="interes"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="iva" class="required small-label">IVA semanal:</label>
+                  <i><h6 id="iva"></h6></i>
+                </div>
+
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="ahorro" class="required small-label">Ahorro semanal:</label>
+                  <i><h6 id="ahorro"></h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="base" class="required small-label" style="font-weight: bold;">Base Inicial:</label>
+                  <i><h6 id="base"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="comision" class="required small-label" style="font-weight: bold;">Comision:</label>
+                  <i><h6 id="comision"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="efectivo" class="required small-label">Efectivo:</label>
+                  <i><h6 id="efectivo"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                  <div class="form-group">
+                    <label for="transferencia" class="required small-label">Transferencia:</label>
+                    <i><h6 id="transferencia"></h6></i>
+                  </div>
+              </div>
+              
+            </div>
+            <div class="row bg-light">
+              <div class="col-4">
+                <div class="form-group">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="total" class="required small-label">Ingreso Semanal:</label>
+                  <i><h6 id="total"></h6></i>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group">
+                  <label for="invertido" class="required small-label">Invertido Esta Semana:</label>
+                  <i><h6 id="invertido"></h6></i>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 20% !important; ">Cliente</th>
+                    <th style="width: 20% !important; ">Fecha que pago</th>
+                    <th style="width: 20% !important; ">Semana</th>
+                    <th style="width: 20% !important; ">Pago</th>
+                    <th style="width: 10% !important; ">Comision</th>
+                    <th style="width: 10% !important; ">Total</th>
+                    <th style="width: 10% !important; ">Medio</th>
+                    <th style="width: 10% !important; ">Dia</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button type="button" class="btn small-button" style="background-color:forestgreen; color:white" id="btndescargar">Descargar Excel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/ReporteSemanal.js?rev=1.0.0.1.22"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+      });
+      moment.locale('ES');
+      const formato = ('YYYY-MM-DD');
+      const formarDS = ('d');
+      let f = moment();
+      var Ds = f.format(formarDS);
+      let faux;
+      let faux2;
+      if (Ds == 0) {
+        faux = f.clone().subtract(6, 'days');
+        faux2 = faux.format(formato);
+      }
+      if (Ds == 1) {
+        faux2 = f.format(formato);
+      }
+      if (Ds == 2) {
+        faux = f.clone().subtract(1, 'days');
+        faux2 = faux.format(formato);
+      }
+      if (Ds == 3) {
+        faux = f.clone().subtract(2, 'days');
+        faux2 = faux.format(formato);
+      }
+      if (Ds == 4) {
+        faux = f.clone().subtract(3, 'days');
+        faux2 = faux.format(formato);
+      }
+      if (Ds == 5) {
+        faux = f.clone().subtract(4, 'days');
+        faux2 = faux.format(formato);
+      }
+      if (Ds == 6) {
+        faux = f.clone().subtract(5, 'days');
+        faux2 = faux.format(formato);
+      }
+
+      $("#semana").val(faux2);
+
+      var diaInicio = moment(faux2).format('DD');
+     // var mes = moment(faux2).format('MMMM');
+      var mes = moment(faux2).locale('es').format('MMMM');
+      var diaFinAux = moment(faux2);
+      var dia2 = diaFinAux.clone().add(6, 'days');
+      var dateend = dia2.format(formato);
+      var diaFin = moment(dateend).format('DD');
+      var tabElement = document.getElementById('tab1');
+
+      // Agregar el texto "de Javier" al contenido del elemento
+      tabElement.innerHTML += ' Del  ' + diaInicio + '  Al  ' + diaFin + "  De  " + mes + " " + '<i class="bi bi-clipboard-data"></i>';
+
+      calcularFecha();
+      $('.semana-right-plus').click(function (e) {
+        e.preventDefault();
+
+        var fechaA = $('#semana').val();
+        var aux2 = moment(fechaA);
+        var dia2 = aux2.clone().add(7, 'days');
+        var dia = dia2.format(formato);
+        $('#semana').val(dia);
+        calcularFecha();
+      });
+
+      $('.semana-left-minus').click(function (e) {
+        e.preventDefault();
+        var fechaA = $('#semana').val();
+        var aux2 = moment(fechaA);
+        var dia2 = aux2.clone().subtract(7, 'days');
+        var dia = dia2.format(formato);
+        $('#semana').val(dia);
+        calcularFecha();
+      });
+      $("#btndescargar").on("click", function () {
+        const formato = ('YYYY-MM-DD');
+        const formarDS = ('d');
+        var fecha = $("#semana").val();
+
+        if (fecha == "") {
+          f = moment();
+          f.format(formarDS);
+        } else {
+          f = moment(fecha);
+          f.format(formarDS);
+        }
+        var datestar;
+        datestar = fecha;
+        var aux2 = moment(datestar);
+        var dia2 = aux2.clone().add(5, 'days');
+        var dateend = dia2.format(formato);
+        descargarExcel(datestar, dateend);
+      });
+    });
+   
+
+  </script>
+}

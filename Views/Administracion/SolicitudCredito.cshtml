@@ -1,0 +1,609 @@
+﻿@{
+  ViewBag.Title = "Solicitudes de Credito";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link" id="tab1">
+              Solicitudes de Credito
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-exclamation" viewBox="0 0 16 16">
+                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372zm-2.54 1.183L5.93 9.363 1.591 6.602z" />
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1.5a.5.5 0 0 1-1 0V11a.5.5 0 0 1 1 0m0 3a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+              </svg>
+            </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <i><h6 id="comisioTotal">Cliente</h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="nombre" class="required small-label">Nombre(s)</label>
+                  <input type="hidden" class="form-control text-capitalize small-input" id="id" placeholder="" maxlength="50">
+                  <input type="text" class="form-control text-capitalize small-input" id="nombre" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="apellido1" class="required small-label">Apellido Paterno</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="apellido1" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="apellido2" class="required small-label">Apellido Materno</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="apellido2" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="credito" class="required small-label">Credito</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="credito" placeholder="" maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaSolicitud" class="required small-label">Fecha de Solicitud</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaSolicitud" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaInicial" class="required small-label">Fecha Inicio</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaInicial" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="baseInicial" class="required small-label">Base Inicial</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="baseInicial" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="ahorroSemanal" class="required small-label">Ahorro Semanal</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="ahorroSemanal" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="pagoTotalSemnal" class="required small-label">Pago Total Semanal</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="pagoTotalSemnal" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="metodoPago" class="required small-label">Metodo de Pago</label>
+                  <select class="form-select chosen-select metodoPago small-select" data-placeholder="Selecciona un metodo de Pago"
+                          data-rel="chosen" name="metodoPago"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaNacimiento" class="required small-label">Fecha de Nacimiento</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaNacimiento" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="metodoPago" class="required small-label">Genero</label>
+                  <select class="form-select chosen-select genero small-select" data-placeholder="Selecciona un genero"
+                          data-rel="chosen" name="genero"></select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="telefono" class="required small-label">Pais de Nacimiento</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="pais" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="telefono" class="required small-label">Nacionalidad</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="nacionalidad" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="telefono" class="required small-label">Estado Civil</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="estadoCivil" placeholder="" maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telefono" class="required small-label">Numero de Telefono</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="telefono" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telefono2" class="required small-label">Numero de Telefono 2</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="telefono2" placeholder="" maxlength="50">
+                </div>
+              </div>
+             @*  <div class="col-md-3">
+                <div class="form-group">
+                  <label for="domicilio" class="required small-label">Domicilio</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="domicilio" placeholder="" maxlength="50">
+                </div>
+              </div> *@
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="garantia" class="required">Garantia</label>
+                  <select class="form-select chosen-select garantia small-select" data-placeholder="Selecciona"
+                          data-rel="chosen" name="garantia"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="casa" hidden>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="domicilioCasa" class="required small-label">Domicilio de la Casa</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="domicilioCasa" placeholder="" maxlength="50">
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="medidasCasa" class="required small-label">Medidas</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="medidasCasa" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="descripcionCasa" class="required small-label">Descripcion de la Casa</label>
+                   <textarea class="form-control text-capitalize small-input" id="descripcionCasa" placeholder="" maxlength="300" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="carro" hidden>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="marca" class="required small-label">Marca</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="marcaCarro" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="modelo" class="required small-label">Modelo</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="modeloCarro" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="color" class="required small-label">Color y Condicion</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="colorCarro" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="kilometraje" class="required small-label">Kilometraje</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="kilometrajeCarro" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="placas" class="required small-label">Placas</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="placasCarro" placeholder="" maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row" id="terreno" hidden>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="ubicacion" class="required small-label">Ubicacion</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="ubicacionTerreno" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="dimencion" class="required small-label">Dimensiones y área</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="dimencionTerreno" placeholder="" maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row" id="moto" hidden>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="marcaMoto" class="required small-label">Marca</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="marcaMoto" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="modeloMoto" class="required small-label">Modelo</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="modeloMoto" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="colorMoto" class="required small-label">Color y Condicion</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="colorMoto" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="kilometrajeMoto" class="required small-label">Kilometraje</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="kilometrajeMoto" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="placasMoto" class="required small-label">Placas</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="placasMoto" placeholder="" maxlength="50">
+                </div>
+              </div>
+            </div>
+            <div class="row" id="otro" hidden>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="descripcionOtro" class="required small-label">Descripcion</label>
+                  <textarea class="form-control text-capitalize small-input" id="descripcionOtro" placeholder="" maxlength="500" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <h6>Domicilio</h6>
+
+            <!-- Domicilio Actual -->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="tipoPropiedad" class="required small-label">Tipo de Propiedad</label>
+                  <input type="text" class="form-control small-input" id="tipoPropiedad" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="domicilio" class="required small-label">Domicilio (Calle y número)</label>
+                  <input type="text" class="form-control small-input" id="domicilio" maxlength="200">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="colonia" class="required small-label">Colonia</label>
+                  <input type="text" class="form-control small-input" id="colonia" maxlength="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="delegacionMunicipio" class="required small-label">Delegación o Municipio</label>
+                  <input type="text" class="form-control small-input" id="delegacionMunicipio" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="poblacion" class="required small-label">Población</label>
+                  <input type="text" class="form-control small-input" id="poblacion" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="estado" class="required small-label">Estado</label>
+                  <input type="text" class="form-control small-input" id="estado" maxlength="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pais" class="required small-label">País</label>
+                  <input type="text" class="form-control small-input" id="pais" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="cp" class="required small-label">Código Postal</label>
+                  <input type="text" class="form-control small-input" id="cp" maxlength="10">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="añosResidencia" class="required small-label">Años de Residencia</label>
+                  <input type="number" class="form-control small-input" id="aniosResidencia">
+                </div>
+              </div>
+            </div>
+
+            <!-- Domicilio Anterior -->
+            <h6>Domicilio Anterior</h6>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="domicilioAnterior" class="required small-label">Domicilio Anterior</label>
+                  <input type="text" class="form-control small-input" id="domicilioAnterior" maxlength="200">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="coloniaAnterior" class="required small-label">Colonia Anterior</label>
+                  <input type="text" class="form-control small-input" id="coloniaAnterior" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="delegacionMunicipioAnterior" class="required small-label">Delegación o Municipio Anterior</label>
+                  <input type="text" class="form-control small-input" id="delegacionMunicipioAnterior" maxlength="100">
+                </div>
+              </div>
+            </div>
+
+            <!-- Empleo Actual -->
+            <h6> Empleo</h6>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="empresa" class="required small-label">Empresa donde trabaja</label>
+                  <input type="text" class="form-control small-input" id="empresa" maxlength="200">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="giroNegocio" class="required small-label">Actividad o Giro del Negocio</label>
+                  <input type="text" class="form-control small-input" id="giroNegocio" maxlength="100">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="ocupacion" class="required small-label">Ocupación</label>
+                  <input type="text" class="form-control small-input" id="ocupacion" maxlength="100">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fechaIngreso" class="required small-label">Fecha de Ingreso</label>
+                  <input type="text" class="form-control small-input datepicker" id="fechaIngreso">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="sueldoMensual" class="required small-label">Sueldo Mensual</label>
+                  <input type="number" class="form-control small-input" id="sueldoMensual" step="0.01">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fuenteOtrosIngresos" class="required small-label">Fuente de Otros Ingresos</label>
+                  <input type="text" class="form-control small-input" id="fuenteOtrosIngresos" maxlength="100">
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <i><h6 id="comisioTotal">Aval</h6></i>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="aval" class="required small-label">Aval</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="aval" placeholder="" maxlength="50" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telefonoAval" class="required small-label">Numero Telefono de Aval</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="telefonoAval" placeholder="" maxlength="50" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telefonoAval2" class="required small-label">Numero Telefono de Aval 2</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="telefonoAval2" placeholder="" maxlength="50" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="telefonoAval2" class="required small-label">Domicilio Aval</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="domicilioAval" placeholder="" maxlength="50" />
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                <button type="button" class="btn small-button" style=" color:white" id="save">Guardar</button>
+                <button type="button" class="btn small-button" style="background-color:gainsboro; color:black" id="botonLimpiar">Limpiar</button>
+              </div>
+            </div>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 40% !important; ">Nombre</th>
+                    <th style="width: 40% !important; ">Credito</th>
+                    <th style="width: 20% !important; ">Fecha Inicio</th>
+                    <th style="width: 20% !important; ">Base Inicial</th>
+                    <th style="width: 10% !important; ">Ahorro semanal</th>
+                    <th style="width: 10% !important; ">Pago Total Semanal</th>
+                    <th style="width: 10% !important; ">Dia de Pago</th>
+                    <th style="width: 10% !important; ">Activo</th>
+                    <th style="width: 10% !important; ">Fecha Registro</th>
+                    <th style="width: 10% !important; "> Editar</th>
+                    <th style="width: 10% !important; "> Aprobar</th>
+                    <th style="width: 10% !important; "> Eliminar</th>
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/Clientes.js?rev=1.0.0.1.24"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+      });
+      GetTable(1);
+      getGarantias();
+      $(".garantia").change(function () {
+        const casaDiv = document.getElementById('casa');
+        const carroDiv = document.getElementById('carro');
+        const terrenoDiv = document.getElementById('terreno');
+        const motoDiv = document.getElementById('moto');
+        const otroDiv = document.getElementById('otro');
+        if ($(".garantia").val() == 1) {
+          casaDiv.hidden = false;
+        } else {
+          casaDiv.hidden = true;
+        }
+        if ($(".garantia").val() == 3) {
+          carroDiv.hidden = false;
+        } else {
+          carroDiv.hidden = true;
+        }
+        if ($(".garantia").val() == 2) {
+          terrenoDiv.hidden = false;
+        } else {
+          terrenoDiv.hidden = true;
+        }
+        if ($(".garantia").val() == 4) {
+          motoDiv.hidden = false;
+        } else {
+          motoDiv.hidden = true;
+        }
+        if ($(".garantia").val() == 5) {
+          otroDiv.hidden = false;
+        } else {
+          otroDiv.hidden = true;
+        }
+      });
+      $('#save').on('click', function () {
+        if (isEmpty("#nombre")) {
+          swalError("Por favor escribe el Nombre");
+          return false;
+        }
+        
+        var data = {};
+        if ($("#id").val() != "") {
+          data.Id = $("#id").val();
+        }
+        data.Nombre = $("#nombre").val();
+        data.Apellido1 = $("#apellido1").val();
+        data.Apellido2 = $("#apellido2").val();
+        data.FechaInicio = $("#fechaInicial").val();
+        data.FechaSolicitud = $("#fechaSolicitud").val();
+        data.Credito = $("#credito").val();
+        data.BaseInicial = $("#baseInicial").val();
+        data.AhorroSemanal = $("#ahorroSemanal").val();
+        data.PagoTotalSemanal = $("#pagoTotalSemnal").val();
+        data.MetodoDePagoId = $(".metodoPago").val();
+        data.Telefono = $("#telefono").val();
+      //  data.Domicilio = $("#domicilio").val();
+        data.Aval = $("#aval").val();
+        data.TelefonoAval = $("#telefonoAval").val();
+        data.Telefono2 = $("#telefono2").val(); // Agregado
+        data.TelefonoAval2 = $("#telefonoAval2").val(); // Agregado
+        data.DomicilioCasa = $("#domicilioCasa").val(); // Agregado
+        data.MedidasCasa = $("#medidasCasa").val(); // Agregado
+        data.DescripcionCasa = $("#descripcionCasa").val(); // Agregado
+        data.MarcaCarro = $("#marcaCarro").val(); // Agregado
+        data.ModeloCarro = $("#modeloCarro").val(); // Agregado
+        data.ColorCarro = $("#colorCarro").val(); // Agregado
+        data.KilometrajeCarro = $("#kilometrajeCarro").val(); // Agregado
+        data.PlacasCarro = $("#placasCarro").val(); // Agregado
+        data.UbicacionTerreno = $("#ubicacionTerreno").val(); // Agregado
+        data.DimencionTerreno = $("#dimencionTerreno").val(); // Agregado
+        data.MarcaMoto = $("#marcaMoto").val(); // Agregado
+        data.ModeloMoto = $("#modeloMoto").val(); // Agregado
+        data.ColorMoto = $("#colorMoto").val(); // Agregado
+        data.KilometrajeMoto = $("#kilometrajeMoto").val(); // Agregado
+        data.PlacasMoto = $("#placasMoto").val(); // Agregado
+        data.DescripcionOtro = $("#descripcionOtro").val(); // Agregado
+        data.FechaNacimiento = $("#fechaNacimiento").val(); // Agregado
+        data.Pais = $("#pais").val(); // Agregado
+        data.Nacionalidad = $("#nacionalidad").val(); // Agregado
+        data.EstadoCivil = $("#estadoCivil").val(); // Agregado
+        data.DomicilioAval = $("#domicilioAval").val(); // Agregado
+        data.GarantiaId = parseInt($(".garantia").val());
+        data.GeneroId = parseInt($(".genero").val());
+        data.solicitud = 1;
+        //nuevos
+        var domicilio = {};
+        domicilio.TipoPropiedad = $("#tipoPropiedad").val();
+        domicilio.domicilio = $("#domicilio").val();
+        domicilio.Colonia = $("#colonia").val();
+        domicilio.DelegacionMunicipio = $("#delegacionMunicipio").val();
+        domicilio.Poblacion = $("#poblacion").val();
+        domicilio.Estado = $("#estado").val();
+        domicilio.Pais = $("#pais").val();
+        domicilio.CodigoPostal = $("#cp").val();
+        domicilio.AniosResidencia = $("#aniosResidencia").val();
+        domicilio.DomicilioAnterior = $("#domicilioAnterior").val();
+        domicilio.ColoniaAnterior = $("#coloniaAnterior").val();
+        domicilio.DelegacionMunicipioAnterior = $("#delegacionMunicipioAnterior").val();
+
+        // Empleo Actual
+        var empleo = {};
+        empleo.Empresa = $("#empresa").val();
+        empleo.GiroNegocio = $("#giroNegocio").val();
+        empleo.Ocupacion = $("#ocupacion").val();
+        empleo.FechaIngreso = $("#fechaIngreso").val();
+        empleo.SueldoMensual = $("#sueldoMensual").val();
+        empleo.FuenteOtrosIngresos = $("#fuenteOtrosIngresos").val();
+
+        SaveSolicitud(data, domicilio, empleo,1);
+      });
+      $('#botonLimpiar').on('click', function () {
+        limpiarElementos();
+      });
+      $("#credito").blur(function () {
+        calculateId();
+      });
+    });
+    function calculateId() {
+      console.log("calculateId called");
+      var baseInicial = $('#credito').val();
+      if (!isNaN(baseInicial)) {
+        var porcentaje = baseInicial * 0.10;
+        var ahorrosemanal = baseInicial * 0.0075;
+
+        var pagoTotalSemanal = (baseInicial / 16) + (baseInicial * 0.015) + (baseInicial * 0.0024) + ahorrosemanal;
+        $('#baseInicial').val(porcentaje);
+        $('#ahorroSemanal').val(ahorrosemanal);
+        $('#pagoTotalSemnal').val(pagoTotalSemanal);
+      }
+    }
+
+  </script>
+}

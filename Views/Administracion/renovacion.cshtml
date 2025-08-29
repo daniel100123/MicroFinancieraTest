@@ -1,0 +1,189 @@
+﻿@{
+  ViewBag.Title = "Renovaciones";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  .datepicker {
+    image-orientation: bottom auto;
+  }
+
+  .dataTables_wrapper .dataTable .badge {
+    display: inline-block !important; /* Asegura que los botones siempre estén visibles */
+  }
+
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">
+              Renovaciones
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-up" viewBox="0 0 16 16">
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+              </svg>
+            </a>
+
+          </nav>
+          <div id="divtab1">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="clientes" class="required">Clientes</label>
+                  <select class="form-select chosen-select clientes small-select" data-placeholder="Selecciona un cliente"
+                          data-rel="chosen" name="clientes"></select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="credito" class="required small-label">Credito</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="id" hidden>
+                  <input type="text" class="form-control text-capitalize small-input" id="credito" placeholder="" maxlength="50">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaTermino" class="required small-label">Fecha de Termino</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaTermino" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaTermino" class="required small-label">Fecha de Solicitud</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaSolicitud" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              
+             
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="fechaInicial" class="required small-label">Fecha Nuevo Credito</label>
+                  <input class="form-control datepicker small-input" type="text" id="fechaInicial" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="comision" class="required small-label">Tomar ahorro Para base</label><br />
+                  <input type="checkbox" class="limpiar" id="ahorroBase" />
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="baseInicial" class="required small-label">Base Inicial</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="baseInicial" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="ahorroSemanal" class="required small-label">Ahorro Semanal</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="ahorroSemanal" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="pagoTotalSemnal" class="required small-label">Pago Total Semanal</label>
+                  <input type="text" class="form-control text-capitalize small-input" id="pagoTotalSemnal" placeholder="" maxlength="50" style="font-weight: bold;" disabled>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="metodoPago" class="required small-label">Metodo de Pago</label>
+                  <select class="form-select chosen-select metodoPago small-select" data-placeholder="Selecciona un metodo de Pago"
+                          data-rel="chosen" name="metodoPago"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                <button type="button" class="btn small-button" style=" color:white" id="save">Guardar</button>
+                <button type="button" class="btn small-button" style="background-color:gainsboro; color:black" id="botonLimpiar">Limpiar</button>
+              </div>
+            </div>
+            <hr />
+            <br />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 20% !important; ">Nombre</th>
+                    <th style="width: 10% !important; ">Credito</th>
+                    <th style="width: 10% !important; ">Fecha Solicitud</th>
+                    <th style="width: 10% !important; ">Fecha del Nuevo Credito</th>
+                    <th style="width: 10% !important; ">Base Inicial</th>
+                    <th style="width: 10% !important; ">Ahorro semanal</th>
+                    <th style="width: 10% !important; ">Pago Total Semanal</th>
+                    <th style="width: 10% !important; ">Dia de Pago</th>
+                    <th style="width: 10% !important; ">Solicitud</th>
+                    <th style="width: 10% !important; ">Activo</th>
+                    <th style="width: 10% !important; "> Editar</th>
+                    <th style="width: 10% !important; "> Aprobar</th>
+                    <th style="width: 10% !important; ">Fecha de Termino del Credito anterior: </th>
+
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/Clientes.js?rev=1.0.0.1.26"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        orientation: 'bottom auto',
+      });
+      getClients();
+     GetTableRenovacion(0);
+      $('#save').on('click', function () {
+        if ($(".metodoPago").val() == 0) {
+          swalError("Por selecciona un metodo de pago");
+          return false;
+        }
+        SaveRenovacion();
+      });
+      $('#botonLimpiar').on('click', function () {
+        limpiarElementos();
+      });
+      $("#credito").blur(function () {
+        calculateId();
+      });
+      $(".clientes").chosen({
+        allow_single_deselect: true,
+        disable_search_threshold: 10, // Oculta la barra de búsqueda si hay pocas opciones
+        width: '100%' // Asegura que chosen ocupe todo el ancho del contenedor
+      });
+    });
+    function calculateId() {
+      console.log("calculateId called");
+      var baseInicial = $('#credito').val();
+      if (!isNaN(baseInicial)) {
+        var porcentaje = baseInicial * 0.10;
+        var ahorrosemanal = baseInicial * 0.0075;
+
+        var pagoTotalSemanal = (baseInicial / 16) + (baseInicial * 0.015) + (baseInicial * 0.0024) + ahorrosemanal;
+        $('#baseInicial').val(porcentaje);
+        $('#ahorroSemanal').val(ahorrosemanal);
+        $('#pagoTotalSemnal').val(pagoTotalSemanal);
+      }
+    }
+
+  </script>
+}

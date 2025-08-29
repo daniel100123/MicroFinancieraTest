@@ -1,0 +1,78 @@
+﻿@{
+  ViewBag.Title = "Renovaciones";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+  .datepicker {
+    image-orientation: bottom auto;
+  }
+
+  .dataTables_wrapper .dataTable .badge {
+    display: inline-block !important; /* Asegura que los botones siempre estén visibles */
+  }
+
+</style>
+<form enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card mt-1">
+        <div class="card-body">
+
+          <nav class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link small-a" id="tab1">
+              Renovaciones Aprobadas
+              <i class="bi bi-person-check"></i>
+            </a>
+
+          </nav>
+          <div id="divtab1">
+            
+            <hr />
+            <br />
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered dataTable dtr-inline collapsed table small-table" id="tmain">
+                <thead>
+                  <tr>
+                    <th style="width: 20% !important; ">Nombre</th>
+                    <th style="width: 10% !important; ">Credito</th>
+                    <th style="width: 10% !important; ">Fecha del Nuevo Credito</th>
+                    <th style="width: 10% !important; ">Base Inicial</th>
+                    <th style="width: 10% !important; ">Ahorro semanal</th>
+                    <th style="width: 10% !important; ">Pago Total Semanal</th>
+                    <th style="width: 10% !important; ">Dia de Pago</th>
+                    <th style="width: 10% !important; ">Solicitud</th>
+                    <th style="width: 10% !important; ">Activo</th>
+                    <th style="width: 10% !important; ">Fecha de Termino del Credito anterior: </th>
+
+                  </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+@section Scripts {
+  <script src="~/js/Views/Clientes.js?rev=1.0.0.1.19"></script>
+  <link rel="stylesheet" type="text/css" href="~/css/views/TablesDisenio.css?rev=1.0.0.0.21">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.29.1/locale/es.js"></script> <!-- Cargar el idioma español -->
+  <script src="~/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        orientation: 'bottom auto',
+      });
+      GetTableRenovacion(1);
+    });
+
+
+  </script>
+}
